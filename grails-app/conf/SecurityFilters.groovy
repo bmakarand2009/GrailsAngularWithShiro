@@ -16,6 +16,7 @@ class SecurityFilters {
                         !(controllerName == 'contacts' && actionName == 'hall') &&
                         !(request.forwardURI.contains("/rest/"))
                 ) {
+
                     accessControl()
                 }
             }

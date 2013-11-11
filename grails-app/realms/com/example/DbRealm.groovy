@@ -114,6 +114,7 @@ class DbRealm {
             // one.
             if (perm.implies(requiredPermission)) {
                 // User has the permission!
+                //
                 return true
             }
             else {

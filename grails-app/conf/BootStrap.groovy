@@ -43,6 +43,9 @@ class BootStrap {
                 Role.findOrCreateWhere(name: 'ROLE_USER').save(flush: true, failOnError: true)
         userRole.addToPermissions("user:read:*")
         userRole.addToPermissions("role:read:*")
+        userRole.addToPermissions("domain:tasks")
+        userRole.addToPermissions("contacts:secretaryRoom")
+        userRole.addToPermissions("contacts:deleteRoom")
         userRole.save(flush: true, failOnError: true)
 
         // Create an admin user
