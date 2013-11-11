@@ -7,6 +7,7 @@ class RestToken implements AuthenticationToken {
     String token
 
     Object getPrincipal() {
+    	println "getPrincipal() called	"
         return token
     }
 

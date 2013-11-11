@@ -14,6 +14,7 @@ abstract class RestUsernamePasswordAuthenticationFilter extends AuthenticatingFi
     private RestService restService
 
     protected AuthenticationToken createToken(ServletRequest request, ServletResponse response) {
+        println "RestUsernamePasswordAuthenticationFilter.CreateToken Method called "
         def username = getUsername(request)
         def password = getPassword(request)
 
@@ -38,7 +39,7 @@ abstract class RestUsernamePasswordAuthenticationFilter extends AuthenticatingFi
             //failed to authenticate. Return 401
             HttpServletResponse httpResponse = WebUtils.toHttp(response);
             httpResponse.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-            httpResponse.writer << "Authentication failure"
+            httpResponse.writer << "HELLO Authentication failure"
 
             return false;
         }
@@ -46,6 +47,7 @@ abstract class RestUsernamePasswordAuthenticationFilter extends AuthenticatingFi
 
     private generateAndSaveTokenForUser(username, request) {
         def token = null
+        println "RestUsernamePasswordAuthenticationFilter.generateAndSaveTokenForUser() called"
 
         //generate unique token
         while (!token) {

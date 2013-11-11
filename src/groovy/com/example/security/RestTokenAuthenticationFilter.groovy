@@ -1,5 +1,4 @@
 package com.example.security
-
 import org.apache.shiro.authc.AuthenticationToken
 import org.apache.shiro.web.filter.authc.AuthenticatingFilter
 import org.apache.shiro.web.util.WebUtils
@@ -27,7 +26,7 @@ abstract class RestTokenAuthenticationFilter extends AuthenticatingFilter {
             //failed to authenticate. Return 401
             HttpServletResponse httpResponse = WebUtils.toHttp(response);
             httpResponse.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-            httpResponse.writer << "REST TOKEN Authentication failure"
+            httpResponse.writer << "found Authentication failure"
 
             return false
         }

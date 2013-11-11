@@ -31,7 +31,8 @@ class BootStrap {
     }
 
     def initDev = {
-    	def adminRole = Role.findOrCreateWhere(name:'ROLE_ADMIN') 
+    	def adminRole = Role.findOrCreateWhere(name:'ROLE_ADMIN')
+        adminRole.addToPermissions("*:*")
         adminRole.addToPermissions("user:*:*")
         adminRole.addToPermissions("role:*:*")
         
