@@ -3,18 +3,41 @@
 * via access control by convention.
 */
 class SecurityFilters {
+
+    def publicActions = [
+            home: ['*'],
+            contacts: ['hall'],
+            contato: ['*'],
+            casal: ["novo", "save"],
+            auth: ['*'],
+    ];
+
+    private boolean findAction(actionMap, controllerName, actionName) {
+        def c = publicActions[controllerName]
+        return (c) ? c.find { (it == actionName || it == '*')} != null : false
+    }
+
+
     def filters = {
         all(uri: "/**") {
             before = {
-                println " Going in SecurityFilters.groovy"
+                println " Going in SecurityFilters.groovy  $controllerName $actionName"
 
                 // Ignore direct views (e.g. the default main index page).
                 if (!controllerName) return true
 
+                // Check for public controller/actions
+                //def isPublic = findAction(publicActions, controllerName, actionName)
+
+                //if (isPublic)
+                  //  return true
+
                 // Access control by convention.
                 if (
                         !(controllerName == 'contacts' && actionName == 'hall') &&
-                        !(request.forwardURI.contains("/rest/"))
+                        !(request.forwardURI.contains("/rest/"))          &&
+                        !(request.forwardURI.contains("main.html"))
+
                 ) {
 
                     accessControl()

@@ -2,7 +2,7 @@ class UrlMappings {
 
 	static mappings = {
 		"/$action?" (controller: 'contacts')
-		"/"(controller: 'contacts', action: 'hall')
+		//"/"(controller: 'contacts', action: 'hall')
 		"500"(view:'/error')
 
         // auth controller
