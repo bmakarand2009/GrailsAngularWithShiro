@@ -59,6 +59,8 @@ grails.project.dependency.resolution = {
         build ":tomcat:7.0.42"
 
         compile ':cache:1.0.1'
-        compile ":shiro:1.2.0"
+        compile(":shiro:1.2.1") {
+           excludes "servlet-api"
+        }
     }
 }

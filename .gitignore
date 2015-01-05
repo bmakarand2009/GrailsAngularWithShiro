@@ -38,7 +38,7 @@
 
 # "temporary" build files
 /target
-
+target/
 # other
 *.iws
 *.idea
